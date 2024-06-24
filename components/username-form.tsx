@@ -18,45 +18,27 @@ import { Input } from "@/components/ui/input"
 import { useRouter } from 'next/navigation'
 
 const formSchema = z.object({
-  room: z.string(),
-  username: z.string()
+  username: z.string(),
 })
 
-export function SessionForm() {
+export function UsernameForm({ room }: { room: string }) {
     const router = useRouter()
       // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      room: "quickstart-room",
-      username: "quickstart-user"
+      username: "quickstart-user",
     },
   })
 
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof formSchema>) {
-      router.push(`/${values.room}?username=${values.username}`)
+        router.replace(`${room}?username=${values.username}`)
       }
 
       return (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="room"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Room</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    The name of the room you want to join
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
             <FormField
               control={form.control}
               name="username"

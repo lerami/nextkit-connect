@@ -13,18 +13,8 @@ import "@livekit/components-styles";
 import { Track } from "livekit-client";
 import { useEffect, useState } from "react";
 
-export default function Page({
-    params
-  }: {
-    params: {
-      room: string
-      user: string
-    }
-  }) {
-  const room = params.room || "quickstart-room";
-  const user = params.user || "quickstart-user";
-
-  const [token, setToken] = useState("");
+export function Room({user, room}: {user: string, room: string}) {
+    const [token, setToken] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -79,4 +69,3 @@ function MyVideoConference() {
       </GridLayout>
     );
   }
-

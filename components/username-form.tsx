@@ -27,7 +27,7 @@ export function UsernameForm({ room }: { room: string }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "quickstart-user",
+      username: "",
     },
   })
 

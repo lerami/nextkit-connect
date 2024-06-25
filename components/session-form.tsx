@@ -28,8 +28,8 @@ export function SessionForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      room: "quickstart-room",
-      username: "quickstart-user"
+      room: "",
+      username: ""
     },
   })
 

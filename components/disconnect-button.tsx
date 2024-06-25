@@ -1,9 +1,14 @@
 "use clients"
 
 import { useDisconnectButton } from "@livekit/components-react";
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-export function DisconnectButton() {
-    const { buttonProps } = useDisconnectButton({onClick: () => redirect('/')});
-    return <button {...buttonProps}>Disconnect</button>;
+export function DisconnectButton({...props}) {
+    const router = useRouter();
+    const { buttonProps } = useDisconnectButton({onClick: () => router.push('/')});
+    return (
+        <div {...props}>
+            <button {...buttonProps}>Disconnect</button>
+        </div>
+    )
 }

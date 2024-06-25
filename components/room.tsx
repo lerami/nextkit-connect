@@ -46,7 +46,10 @@ export function Room({user, room}: {user: string, room: string}) {
           <RoomAudioRenderer />
           {/* Controls for the user to start/stop audio, video, and screen
           share tracks and to leave the room. */}
-          <ControlBar />
+          <div className="flex justify-center content-center">
+            <ControlBar className="!border-none" controls={{leave: false}} />
+            <DisconnectButton className="p-3" />
+          </div>
         </LiveKitRoom>
       );
 }
